@@ -1,5 +1,6 @@
+/* Base styles (Laptop / Desktop) */
 .header {
-  height: clamp(100px, 10vw, 100px);
+  height: 100px; /* Laptop/desktop default */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -15,26 +16,57 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
   border-radius: 0 0 12px 12px;
+  padding: 0 10%;
 }
 
 .image-logo {
-  height: clamp(10vh, 15vh, 16vh);
-  width: clamp(10vh, 15vh, 16vh);
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
   object-fit: cover;
   border: none;
-  margin-left: 10%;
+  margin-left: 0;
   transition: transform 150ms ease, filter 150ms ease, box-shadow 150ms ease;
 }
+
 .image-logo:hover {
   filter: drop-shadow(0 0 15px #0077c3) drop-shadow(0 0 30px #0077c3);
 }
+
 .image-logo:active {
   transform: scale(0.96);
   filter: brightness(0.92);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) inset;
 }
+
 .logo-link {
   cursor: pointer;
   display: inline-block;
+}
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+  .header {
+    height: 90px;
+    padding: 0 7%;
+  }
+
+  .image-logo {
+    height: 70px;
+    width: 70px;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+  .header {
+    height: 80px;
+    padding: 0 5%;
+    flex-direction: row; /* Keep row, but you could stack if needed */
+  }
+
+  .image-logo {
+    height: 50px;
+    width: 50px;
+  }
 }
