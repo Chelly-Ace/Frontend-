@@ -1,6 +1,6 @@
 /* Base styles (Laptop / Desktop) */
 .header {
-  height: 100px; /* Laptop/desktop default */
+  height: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -9,9 +9,9 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 99;
+  z-index: 9999;
 
-  background-color: rgba(20, 21, 38, 0.9);
+  background-color: rgba(20, 21, 38, 0.95);
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
@@ -63,10 +63,25 @@
     height: 80px;
     padding: 0 5%;
     flex-direction: row;
+    justify-content: space-between; /* ensure items don't overlap */
+    align-items: center;
+    border-radius: 0; /* remove rounded corners for full-width feel */
   }
 
   .image-logo {
     height: 50px;
     width: 50px;
+  }
+
+  .header-buttons {
+    display: flex;
+    flex-direction: column; /* stack nav buttons */
+    position: absolute;
+    top: 80px; /* below the header */
+    right: 5%;
+    background-color: rgba(20, 21, 38, 0.95);
+    padding: 10px;
+    border-radius: 8px;
+    display: none; /* hidden by default, can toggle with a mobile menu button */
   }
 }
