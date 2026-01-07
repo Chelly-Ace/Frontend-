@@ -66,7 +66,9 @@ function HomeSection() {
 
   const statusColor = device_status === "Connected" ? "green" : "red";
   const formattedTime = dayjs(timestamp).format("hh:mm A");
-  const wholeNum = Math.round(avg_heartrate);
+  const wholeNum = Number.isNaN(avg_heartrate)
+    ? "--"
+    : Math.round(avg_heartrate);
 
   return (
     <section id="home" className="home-section">
