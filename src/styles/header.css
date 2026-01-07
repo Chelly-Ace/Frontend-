@@ -62,7 +62,7 @@
   .header {
     height: 80px;
     padding: 0 5%;
-    flex-direction: row; /* Keep row, but you could stack if needed */
+    flex-direction: row;
   }
 
   .image-logo {
