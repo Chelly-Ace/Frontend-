@@ -1,10 +1,15 @@
 
 import { useEffect, useState } from "react";
 
-const BACKEND_URL_LATEST = "http://localhost:8000/latest";
-const BACKEND_URL_DAILY = "http://localhost:8000/daily";
-const BACKEND_URL_USERS_LIST = "http://localhost:8000/user_list";
-const BACKEND_URL_HISTORY = "http://localhost:8000/history";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
+console.log("API BASE URL:", API_BASE_URL);
+
+const BACKEND_URL_LATEST = `${API_BASE_URL}/latest`;
+const BACKEND_URL_DAILY = `${API_BASE_URL}/daily`;
+const BACKEND_URL_USERS_LIST = `${API_BASE_URL}/user_list`;
+const BACKEND_URL_HISTORY = `${API_BASE_URL}/history`;
+
 
 const SensorData = ({ username, setLatestData, setDailyData, setUserList, setLatestHistory }) => {
 
