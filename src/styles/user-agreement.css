@@ -1,4 +1,6 @@
-/* Overlay blocks entire screen */
+/* ===============================
+   OVERLAY BLOCKS ENTIRE SCREEN
+   =============================== */
 .agreement-overlay {
   position: fixed;
   inset: 0;
@@ -6,11 +8,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
-  padding: 16px; /* allows spacing on small screens */
+  z-index: 99999; /* ensure overlay is above everything */
+  padding: 16px; /* spacing for small screens */
+  overflow: hidden; /* prevent scrolling on body */
+
+  /* block all clicks outside the box */
+  pointer-events: auto;
 }
 
-/* Agreement box */
+/* Disable body scroll when overlay is active */
+body.agreement-open {
+  overflow: hidden;
+}
+
+/* ===============================
+   AGREEMENT BOX
+   =============================== */
 .agreement-box {
   background: #ffffff;
   width: 100%;
@@ -21,9 +34,24 @@
   text-align: center;
   font-family: Arial, sans-serif;
   overflow-y: auto; /* scroll inside the box */
+  box-sizing: border-box;
+
+  /* enable clicks inside box */
+  pointer-events: auto;
+  z-index: 100000; /* ensure box is above overlay background */
 }
 
-/* Headings */
+/* Disable clicks on everything else */
+.agreement-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: auto; /* absorb all clicks */
+}
+
+/* ===============================
+   HEADINGS
+   =============================== */
 .agreement-box h2 {
   color: #0f172a;
   margin-bottom: 12px;
@@ -38,15 +66,19 @@
   line-height: 1.6;
 }
 
-/* Buttons */
+/* Buttons container */
 .agreement-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
   margin-top: 16px;
+
+  /* buttons remain clickable */
+  pointer-events: auto;
 }
 
+/* Buttons */
 .agreement-buttons button {
   flex: 1 1 120px;
   padding: 10px;
@@ -54,6 +86,8 @@
   border-radius: 6px;
   font-size: 0.9rem;
   cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  pointer-events: auto; /* ensure clickable */
 }
 
 /* Accept / Decline colors */
@@ -74,33 +108,48 @@
   font-size: 0.9rem;
 }
 
-/* Button base */
-.agreement-buttons button {
-  flex: 1 1 120px;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
-}
-
-/* Hover effect (desktop) */
+/* Hover effect */
 .agreement-buttons button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   opacity: 0.95;
 }
 
-/* Click / active effect */
+/* Active click effect */
 .agreement-buttons button:active {
   transform: translateY(0);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2) inset;
   opacity: 0.9;
 }
 
-/* Optional: focus for accessibility */
+/* Focus for accessibility */
 .agreement-buttons button:focus-visible {
   outline: 2px solid #38bdf8;
   outline-offset: 2px;
+}
+
+/* ===============================
+   MOBILE ADAPTIVE STYLES
+   =============================== */
+@media (max-width: 600px) {
+  .agreement-box {
+    max-height: 85vh;
+    padding: 16px;
+    width: 100%;
+    margin: 0 8px;
+  }
+
+  .agreement-box h2 {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+  }
+
+  .agreement-box p {
+    font-size: clamp(0.75rem, 3.5vw, 0.9rem);
+  }
+
+  .agreement-buttons button {
+    font-size: 0.85rem;
+    flex: 1 1 100px;
+    padding: 8px;
+  }
 }

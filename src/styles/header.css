@@ -73,15 +73,5 @@
     width: 50px;
   }
 
-  .header-buttons {
-    display: flex;
-    flex-direction: column; /* stack nav buttons */
-    position: absolute;
-    top: 80px; /* below the header */
-    right: 5%;
-    background-color: rgba(20, 21, 38, 0.95);
-    padding: 10px;
-    border-radius: 8px;
-    display: none; /* hidden by default, can toggle with a mobile menu button */
-  }
+  /* Remove header-buttons styles from here! */
 }

@@ -49,7 +49,7 @@ function LandingPage() {
       <UserAgreement />
 
       <header className="header">
-        {/* Logo */}
+
         <Link
           to="Intro"
           smooth={false}
