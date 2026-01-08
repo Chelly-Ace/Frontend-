@@ -66,7 +66,8 @@ function HomeSection() {
 
   const statusColor = device_status === "Connected" ? "green" : "red";
   const formattedTime = dayjs(timestamp).format("hh:mm A");
-  const wholeNum = Number.isNaN(avg_heartrate)
+
+  const wholeNum = Number.isNaN(Math.round(avg_heartrate))
     ? "--"
     : Math.round(avg_heartrate);
 

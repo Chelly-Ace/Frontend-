@@ -74,7 +74,7 @@ function LandingPage() {
           <Link
             to="statistics"
             smooth={false}
-            offset={-85}
+            offset={-98}
             className={`button-nav-link ${active === "statistics" ? "active" : ""}`}
             onClick={handleClick("statistics")}
           >
