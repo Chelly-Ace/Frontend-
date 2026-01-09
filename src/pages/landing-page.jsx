@@ -59,7 +59,7 @@ function LandingPage() {
           <img className="image-logo" src={LogoImage} alt="Logo" />
         </Link>
 
-        {/* Navigation - always visible */}
+
         <nav className="header-buttons">
           <Link
             to="home"
